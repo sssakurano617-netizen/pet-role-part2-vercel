@@ -1,15 +1,23 @@
 export const runtime = "nodejs";
 
 import { NextResponse } from "next/server";
-// 相対パスで安全に（エイリアスOKなら "@/lib/prisma" でも可）
-import { prisma } from "../../../lib/prisma"; // または "@/lib/prisma"
+import { prisma } from "../../../lib/prisma"; // "@/lib/prisma" でもOK
 
-
+// --- GET: 図鑑一覧 ---
+// DBで失敗しても空配列を返してページが落ちない暫定対応
 export async function GET() {
-  const pets = await prisma.pet.findMany({ orderBy: { createdAt: "desc" } });
-  return NextResponse.json(pets);
+  try {
+    // 並び替えは一旦なし（createdAtが無い環境でも動かすため）
+    const pets = await prisma.pet.findMany();
+    return NextResponse.json(pets);
+  } catch (e) {
+    console.error("[/api/pets GET] DB error:", e);
+    // とりあえず表示させるために200で空配列を返す
+    return NextResponse.json([]);
+  }
 }
 
+// --- POST: 追加（そのまま利用可） ---
 export async function POST(req: Request) {
   try {
     const { species, name, role, comment, emoji } = await req.json();
@@ -26,7 +34,7 @@ export async function POST(req: Request) {
     });
     return NextResponse.json(pet, { status: 201 });
   } catch (e) {
-    console.error(e);
+    console.error("[/api/pets POST] error:", e);
     return NextResponse.json({ error: "サーバーエラー" }, { status: 500 });
   }
 }
