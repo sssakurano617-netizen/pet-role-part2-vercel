@@ -1,7 +1,6 @@
 // app/layout.tsx
 "use client";
 import "./globals.css";
-import MotionController from "./providers/MotionController";
 import IdleAutoReload from "./providers/IdleAutoReload"; // ★ 追加
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -35,7 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <main className={showNav ? "pt-16" : ""}>{children}</main>
 
-        <MotionController />
+      
       </body>
     </html>
   );
