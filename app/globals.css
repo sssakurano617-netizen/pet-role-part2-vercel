@@ -1,25 +1,12 @@
-/* app/globals.css — 完全修正版 */
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* ベースリセット */
-:root {
-  color-scheme: light;
-}
+/* app/globals.css ——— これで置き換え */
+@import "tailwindcss";
 
 html, body {
-  height: 100%;
-}
-
-body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ユーティリティを壊さない軽いカスタム例 */
 a {
   text-decoration: none;
   color: inherit;
