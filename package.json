@@ -1,8 +1,24 @@
 {
+  "dependencies": {
+    "@prisma/client": "6.15.0",
+    "canvas-confetti": "1.9.3",
+    "framer-motion": "12.23.12",
+    "next": "15.5.2",
+    "prisma": "6.15.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "recharts": "3.1.2",
+    "swr": "2.3.6"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --no-turbo",
-    "start": "next start",
-    "lint": "eslint"
+    "build": "next build --turbopack",
+    "start": "next start"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.1.16",
+    "@types/node": "20.19.24",
+    "@types/react": "19.2.2",
+    "typescript": "5.9.3"
   }
 }
