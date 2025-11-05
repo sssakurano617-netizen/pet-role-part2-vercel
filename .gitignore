@@ -53,3 +53,7 @@ next-env.d.ts
 !prisma/migrations/**
 
 .env
+
+.env
+.env.local
+.env.*.local
