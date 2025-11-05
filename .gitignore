@@ -47,3 +47,8 @@ next-env.d.ts
 /prisma/migrations/
 *.db
 *.db-journal
+
+# Track Prisma migrations
+!prisma/
+!prisma/migrations/**
+

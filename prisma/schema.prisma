@@ -1,20 +1,22 @@
+// prisma/schema.prisma
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
   provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  url       = env("DATABASE_URL")   // プーラー(6543)
+  directUrl = env("DIRECT_URL")     // ダイレクト(5432)
 }
 
 
+
 model Pet {
-  id        Int      @id @default(autoincrement())
-  species   String
-  name      String
-  role      String
-  comment   String
-  emoji     String?
+  id       Int      @id @default(autoincrement())
+  species  String
+  name     String
+  role     String
+  comment  String
+  emoji    String?
   createdAt DateTime @default(now())
 }
